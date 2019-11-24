@@ -30,6 +30,7 @@ def decode_review(text):
 
 #print(decode_review(test_data[0]))
 
+# Test data length
 #print(len(test_data[0]), len(test_data[1]))
 
 # start model 
@@ -48,7 +49,7 @@ model.summary()
 # binary_crossentropy how much its away from 0 or 1
 model.compile(optimiser="adam", loss="binary_crossentropy", metrics=["accuracy"])
 
-# get validation data
+# split test data into test_data and validation data
 x_val = train_data[:10000]
 x_train = train_data[10000:]
 

@@ -11,8 +11,11 @@ data = keras.datasets.imdb
 
 word_index = data.get_word_index()
 word_index = {k:(v+3) for k, v in word_index.items()}
+# to fill up data that its the same size
 word_index["<PAD>"] = 0
+# Start of review
 word_index["<START>"] = 1
+# Word thats not ni the index
 word_index["<UNK>"] = 2
 word_index["<UNUSED>"] = 3
 
@@ -29,7 +32,8 @@ def review_encode(text):
 
 model = keras.models.load_model("text.h5")
 
-with open("rewiew.txt", encoding="utf-8") as f:
+# test with own written review
+with open("review.txt", encoding="utf-8") as f:
     for line in f.readlines():
         # remove "."  for instance "good." is not a word only good 
         nline = line.replace(",", "").replace(".", "").replace("(", "").replace(")", "").replace(":", "").replace("\"", "").strip().split(" ")
